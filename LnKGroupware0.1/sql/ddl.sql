@@ -1,15 +1,26 @@
+SHOW TABLES;
+
+DROP TABLE vacation;
+DROP TABLE retire;
+DROP TABLE report;
+DROP TABLE emp;
+DROP TABLE grade;
+DROP TABLE authority;
+DROP TABLE document;
+DROP TABLE dept;
+
 
 # 부서 
 CREATE TABLE dept (
-	dept_no		INT				NOT NULL,
+	dept_no		INT				NOT NULL		PRIMARY KEY,
 	dept_name	VARCHAR(20) 	NOT NULL
 );
 
 
 # 직급
-CREATE TABLE position (
-	position_no			INT				NOT NULL,
-	position_name		VARCHAR(20)		NOT NULL
+CREATE TABLE grade (
+	grade_no			INT				NOT NULL		PRIMARY KEY,
+	grade_name		VARCHAR(20)		NOT NULL
 );
 
 
@@ -21,7 +32,7 @@ CREATE TABLE authority (
 
 
 # 결재문서번호 
-CREATE TABLE document_no (
+CREATE TABLE document (
 	document_no		INT				NOT NULL		PRIMARY KEY,
 	documnet_name	VARCHAR(30)		NOT NULL
 );
@@ -33,11 +44,11 @@ CREATE TABLE emp (
 	emp_name		VARCHAR(20)		NOT NULL,
 	password		VARCHAR(20)		NOT NULL,
 	dept_no			INT				NOT NULL,
-	position_no		INT				NOT NULL,
+	grade_no		INT				NOT NULL,
 	email			VARCHAR(40)		NOT NULL,
 	hire_date		DATE			NOT NULL,
-	FOREIGN KEY (dept_no) REFERENCES dept(dept_no),
-	FOREIGN KEY (position_no) REFERENCES position(position_no)
+	FOREIGN KEY (dept_no)		REFERENCES dept(dept_no),
+	FOREIGN KEY (grade_no)		REFERENCES grade(grade_no)
 );
 
 
@@ -56,7 +67,7 @@ CREATE TABLE user_authority (
 CREATE TABLE report (
 	report_no		INT				NOT NULL	AUTO_INCREMENT		PRIMARY KEY,
 	dept_no			INT 			NOT NULL,
-	position_no		INT 			NOT NULL,
+	grade_no		INT 			NOT NULL,
 	emp_no			INT 			NOT NULL,
 	document_no		INT				NOT NULL,
 	report_01		VARCHAR(100)	NOT NULL,
@@ -66,7 +77,7 @@ CREATE TABLE report (
 	modi_date		DATE,
 	state			VARCHAR(10)		NOT NULL,
 	FOREIGN KEY (dept_no)		REFERENCES dept(dept_no),
-	FOREIGN KEY (position_no)	REFERENCES position(position_no),
+	FOREIGN KEY (grade_no)		REFERENCES grade(grade_no),
 	FOREIGN KEY (emp_no)		REFERENCES emp(emp_no),
 	FOREIGN KEY (document_no)	REFERENCES document(document_no)
 	
@@ -77,7 +88,7 @@ CREATE TABLE report (
 CREATE TABLE vacation (
 	vacation_no		INT				NOT NULL	AUTO_INCREMENT		PRIMARY KEY,
 	dept_no			INT 			NOT NULL,
-	position_no		INT 			NOT NULL,
+	grade_no		INT 			NOT NULL,
 	emp_no			INT 			NOT NULL,
 	document_no		INT				NOT NULL,
 	vacation_01		VARCHAR(10)		NOT NULL,
@@ -89,7 +100,7 @@ CREATE TABLE vacation (
 	modi_date		DATE,
 	state			VARCHAR(10)		NOT NULL,
 	FOREIGN KEY (dept_no)		REFERENCES dept(dept_no),
-	FOREIGN KEY (position_no)	REFERENCES position(position_no),
+	FOREIGN KEY (grade_no)		REFERENCES grade(grade_no),
 	FOREIGN KEY (emp_no)		REFERENCES emp(emp_no),
 	FOREIGN KEY (document_no)	REFERENCES document(document_no)
 );
@@ -99,7 +110,7 @@ CREATE TABLE vacation (
 CREATE TABLE retire (
 	retire_no		INT				NOT NULL	AUTO_INCREMENT		PRIMARY KEY,
 	dept_no			INT 			NOT NULL,
-	position_no		INT 			NOT NULL,
+	grade_no		INT 			NOT NULL,
 	emp_no			INT 			NOT NULL,
 	document_no		INT				NOT NULL,
 	retire_01		VARCHAR(20)		NOT NULL,
@@ -110,10 +121,7 @@ CREATE TABLE retire (
 	modi_date		DATE,
 	state			VARCHAR(10)		NOT NULL,
 	FOREIGN KEY (dept_no)		REFERENCES dept(dept_no),
-	FOREIGN KEY (position_no)	REFERENCES position(position_no),
+	FOREIGN KEY (grade_no)		REFERENCES grade(grade_no),
 	FOREIGN KEY (emp_no)		REFERENCES emp(emp_no),
 	FOREIGN KEY (document_no)	REFERENCES document(document_no)
 );
-
-
-
