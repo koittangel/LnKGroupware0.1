@@ -2,8 +2,8 @@
     <wb-module deploy-name="LnKGroupware0.1-0.0.1-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/webapp" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/" source-path="/WebContent"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <property name="context-root" value="LnKGroupware0.1"/>
         <property name="java-output-path" value="/LnKGroupware0.1/build/classes"/>
     </wb-module>
