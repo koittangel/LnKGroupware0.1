@@ -3,9 +3,9 @@ SHOW TABLES;
 DROP TABLE vacation;
 DROP TABLE retire;
 DROP TABLE report;
+DROP TABLE connection;
 DROP TABLE emp;
 DROP TABLE grade;
-DROP TABLE authority;
 DROP TABLE document;
 DROP TABLE dept;
 
@@ -17,17 +17,10 @@ CREATE TABLE dept (
 );
 
 
-# 직급
+# 그룹웨어 사용 권한이자 직위 (관리자, 사장, 이사, 부장, 대리, 사원)
 CREATE TABLE grade (
-	grade_no			INT				NOT NULL		PRIMARY KEY,
-	grade_name		VARCHAR(20)		NOT NULL
-);
-
-
-# 그룹웨어 사용 권한 (관리자 / 사원)
-CREATE TABLE authority (
-	authority_id		INT				NOT NULL PRIMARY KEY,
-	authority_name		VARCHAR(30)		NOT NULL
+	grade_no		INT				NOT NULL	PRIMARY KEY,
+	grade_name		VARCHAR(30)		NOT NULL
 );
 
 
@@ -47,18 +40,19 @@ CREATE TABLE emp (
 	grade_no		INT				NOT NULL,
 	email			VARCHAR(40)		NOT NULL,
 	hire_date		DATE			NOT NULL,
+	photo			VARCHAR(255), 
 	FOREIGN KEY (dept_no)		REFERENCES dept(dept_no),
 	FOREIGN KEY (grade_no)		REFERENCES grade(grade_no)
 );
 
 
 
-# 사용자(관리자 / 사원)와 권한 연결
-CREATE TABLE user_authority (
+# 권한 연결
+CREATE TABLE connection (
 	emp_no			INT		NOT NULL,
-	authority_id	INT		NOT NULL,
-	FOREIGN KEY (emp_no)			REFERENCES	emp(emp_no),
-	FOREIGN	 KEY (authority_id)		REFERENCES authority(authority_id) 
+	grade_no		INT		NOT NULL,
+	FOREIGN KEY (emp_no)		REFERENCES	emp(emp_no),
+	FOREIGN	 KEY (grade_no)		REFERENCES grade(grade_no) 
 );
 
 

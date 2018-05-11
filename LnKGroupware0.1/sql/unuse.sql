@@ -11,3 +11,9 @@ CREATE TABLE approval (
 	state			VARCHAR(20)		NOT NULL,
 	FOREIGN KEY (writer) REFERENCES emp(emp_no)
 );
+
+# 직급
+CREATE TABLE grade (
+	grade_no			INT				NOT NULL		PRIMARY KEY,
+	grade_name		VARCHAR(20)		NOT NULL
+);
