@@ -6,8 +6,8 @@ public class Grade implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Integer gradeNo;
-	private String gradeName;
+	private Integer gradeNo;			// 직위권한 번호
+	private String gradeName;			// 직위권한 명
 	
 	public Grade() {}
 
