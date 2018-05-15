@@ -25,8 +25,8 @@ public interface EmpDao {
 	// 사원 번호를 이용해 사원 권한 삭제
 	public void deleteEmpGrade(Integer empNo) throws EmpException;
 	
-	// 사원 번호를 이용해 사원 정보 가져오기
-	public Emp selectByEmpNo(Integer empNo) throws EmpException;
+	// 사원 이메일을 이용해 사원 정보 가져오기
+	public Emp selectByEmail(String email) throws EmpException;
 	
 	// 권한 연결 테이블 Connection에 정보 입력하기
 	public void insertConnection(Emp emp) throws EmpException;

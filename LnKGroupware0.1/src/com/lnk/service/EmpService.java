@@ -28,8 +28,8 @@ public interface EmpService {
 	// 사원 삭제
 	public void remove(Integer empNo) throws EmpException;
 	
-	// 사원 번호를 이용해 사원 정보 가져오기
-	public Emp detailByEmpNo(Integer emoNo) throws EmpException; 
+	// 사원 이메일을 이용해 사원 정보 가져오기
+	public Emp detailByEmail(String email) throws EmpException; 
 	
 	// 사원 권한 가져오기
 	public Grade getGrade(Integer gradeNo) throws EmpException;
