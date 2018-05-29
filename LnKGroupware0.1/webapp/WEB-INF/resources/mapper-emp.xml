@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.lnk.model.Emp">
+  	<select id="select-all-emp" resultType="Emp">
+  		SELECT * FROM emp
+  	</select>
+  	
+  	<resultMap type="Emp" id="EmpResultMap">
+  		<id property="empNo" column="emp_no"/>
+  		<result property="empName" column="emp_name"/>
+  		<result property="password" column="password"/>
+  		<result property="email" column="email"/>
+  		<result property="hireDate" column="hire_date"/>
+  		<result property="photo" column="photo"/>
+  		<result property="dept.deptName" column="dept_name"/>
+  		<result property="grade.gradeName" column="grade_name"/>
+  	</resultMap>
+  	
+  	<select id="select-emp" parameterType="String" resultMap="EmpResultMap">
+  	
+  	</select>
+  	
+  </mapper>
+  
+  
+  
+  
+  
+  
+  
